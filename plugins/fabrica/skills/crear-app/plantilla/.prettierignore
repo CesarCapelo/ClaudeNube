@@ -9,3 +9,5 @@ playwright-report/
 next-env.d.ts
 src/lib/db/esquema-auth.ts
 movil/
+.claude/
+scripts/auditar-ui.mjs

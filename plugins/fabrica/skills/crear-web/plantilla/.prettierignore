@@ -5,3 +5,5 @@ package-lock.json
 .fabrica/
 test-results/
 playwright-report/
+.claude/
+scripts/auditar-ui.mjs

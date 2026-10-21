@@ -115,7 +115,7 @@ Lee `${CLAUDE_SKILL_DIR}/referencia/funcionalidades.md` para lo que pida el brie
 3. Por cada página terminada:
    - Añádela a `PAGINAS` en `tests/sitio.spec.ts`.
    - Ejecuta `npm run espacios && npm run check && npm run build`.
-   - Haz capturas con `node scripts/auditar-ui.mjs --rutas /<ruta> --viewports movil,escritorio`, míralas y corrige.
+   - Con la vista previa en marcha (`npx astro preview --background`; sirve la última compilación), haz capturas con `node scripts/auditar-ui.mjs --rutas /<ruta> --viewports movil,escritorio`, míralas y corrige.
    - Commit y `tarea <id> hecha`.
 4. Imágenes: las del cliente van a `src/assets/` optimizadas con `<Image />`. Si no hay imágenes, sigue la estrategia de imagen de `diseno.md`. Nunca uses imágenes con derechos dudosos.
 
