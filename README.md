@@ -13,6 +13,8 @@ Las dos funcionan igual:
 2. **Trabajo autónomo**: a partir de tu confirmación no vuelven a preguntar. Deciden con criterios documentados, registran cada decisión y siguen hasta entregar. Puedes cerrar la ventana.
 3. **Entrega**: el proyecto queda en un repositorio git con `ENTREGA.md`, un informe para la persona que revisa con resultados de calidad, decisiones, pendientes del cliente y una checklist de revisión.
 
+**Ejemplos reales:** en [`ejemplos/`](ejemplos/README.md) están la web y la aplicación que produjeron las skills de forma autónoma en la prueba de extremo a extremo (32 y 62 minutos), con sus entregas, su trazabilidad y capturas.
+
 ## Qué hay dentro
 
 ```text
@@ -25,6 +27,7 @@ plugins/fabrica/
   scripts/                          estado.mjs (memoria del proyecto), auditar-ui.mjs (auditoría), paleta.mjs (colores accesibles)
   referencia/protocolo-autonomo.md  Reglas comunes del trabajo sin supervisión
 plantillas/                         Briefs para rellenar tras la reunión con el cliente
+ejemplos/                           Una web y una aplicación generadas en la prueba real, con capturas
 instalar.mjs                        Instalación dentro de un proyecto (para sesiones en la nube)
 ```
 
@@ -97,7 +100,7 @@ Para dejarlo trabajando sin mirar, Claude no debe quedarse esperando a que aprue
 - **En local, dentro de un contenedor o máquina virtual**: `claude --dangerously-skip-permissions`. Los hooks de la fábrica siguen bloqueando las acciones peligrosas.
 - **En local, en tu ordenador de trabajo**: `claude --permission-mode acceptEdits`. Las plantillas incluyen en `.claude/settings.json` una lista de comandos permitidos (npm, npx, node, git sin push…) que evita la mayoría de preguntas. Claude Code solo la aplica cuando has aceptado el aviso de confianza de la carpeta; ábrela una vez en modo interactivo y acéptalo.
 
-Mantén el ordenador encendido y sin suspensión mientras trabaja. Como referencia, en la prueba real de este repositorio una web profesional de 6 páginas, con todas sus fases (investigación, diseño, textos, construcción, dos vueltas de calidad con revisores y documentación), tardó 32 minutos. Las aplicaciones tardan varias horas según el número de historias de usuario.
+Mantén el ordenador encendido y sin suspensión mientras trabaja. Como referencia, en la prueba real de este repositorio una web profesional de 6 páginas, con todas sus fases (investigación, diseño, textos, construcción, dos vueltas de calidad con revisores y documentación), tardó 32 minutos. Una aplicación interna con 5 historias de usuario, especificación, pruebas y revisiones tardó 62 minutos; las más grandes tardarán varias horas.
 
 ### Qué queda en cada proyecto
 

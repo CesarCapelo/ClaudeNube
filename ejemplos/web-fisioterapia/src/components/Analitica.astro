@@ -1,0 +1,14 @@
+---
+// Analítica sin cookies: no requiere banner de consentimiento mientras no haya otras cookies.
+import { sitio } from '../config/sitio';
+
+const { proveedor, dominio, script, idSitio } = sitio.analitica;
+const esProduccion = import.meta.env.PROD;
+---
+
+{esProduccion && proveedor === 'plausible' && dominio && (
+  <script is:inline defer data-domain={dominio} src="https://plausible.io/js/script.js" />
+)}
+{esProduccion && proveedor === 'umami' && script && idSitio && (
+  <script is:inline defer src={script} data-website-id={idSitio} />
+)}

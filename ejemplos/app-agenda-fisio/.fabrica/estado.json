@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "skill": "crear-app",
+  "nombre": "Agenda Fisio",
+  "creado": "2026-10-21T18:14:22.301Z",
+  "actualizado": "2026-10-21T19:15:49.409Z",
+  "modo": "entregado",
+  "fase": "entrega",
+  "fases": [
+    {
+      "id": "entrevista",
+      "titulo": "Entrevista inicial",
+      "estado": "hecha"
+    },
+    {
+      "id": "especificacion",
+      "titulo": "Especificación funcional",
+      "estado": "hecha"
+    },
+    {
+      "id": "arquitectura",
+      "titulo": "Arquitectura, modelo de datos y plan",
+      "estado": "hecha"
+    },
+    {
+      "id": "base",
+      "titulo": "Proyecto base: autenticación, datos, CI y diseño",
+      "estado": "hecha"
+    },
+    {
+      "id": "construccion",
+      "titulo": "Construcción por funcionalidades",
+      "estado": "hecha"
+    },
+    {
+      "id": "calidad",
+      "titulo": "Calidad: tests, seguridad, auditorías y correcciones",
+      "estado": "hecha"
+    },
+    {
+      "id": "publicacion",
+      "titulo": "Publicación de la versión de prueba",
+      "estado": "hecha"
+    },
+    {
+      "id": "entrega",
+      "titulo": "Entrega: documentación e informe final",
+      "estado": "hecha"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "base",
+      "titulo": "Proyecto base e identidad",
+      "fase": "base",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.793Z",
+      "nota": "npm run verificar en verde"
+    },
+    {
+      "id": "equipo",
+      "titulo": "T1 Cuentas y marca atiende citas",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.295Z",
+      "nota": "Integración + e2e (alta, marca, rol, salvaguardas)"
+    },
+    {
+      "id": "h1-pacientes",
+      "titulo": "H1 Alta y gestión de pacientes",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:27:56.225Z",
+      "nota": "Integración y e2e del agente pasan; falta e2e global"
+    },
+    {
+      "id": "h2-citas",
+      "titulo": "H2 Crear cita sin solapes",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.387Z",
+      "nota": "Integración (solapes, concurrencia) + e2e"
+    },
+    {
+      "id": "h3-agenda",
+      "titulo": "H3 Agenda del día y de la semana",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.478Z",
+      "nota": "e2e día/semana + cambio de hora en integración"
+    },
+    {
+      "id": "h4-estados",
+      "titulo": "H4 Estado de la cita",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.571Z",
+      "nota": "Integración RN2 + e2e"
+    },
+    {
+      "id": "h5-sin-volver",
+      "titulo": "H5 Pacientes sin volver",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:27:56.297Z",
+      "nota": "Integración RN5 (61/60/59 días) y e2e"
+    },
+    {
+      "id": "t2-exportar",
+      "titulo": "T2 Exportar datos de un paciente",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:27:56.411Z",
+      "nota": "e2e CSV 200/403/401"
+    },
+    {
+      "id": "t3-actividad",
+      "titulo": "T3 Registro de actividad",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.647Z",
+      "nota": "e2e admin/user/sin sesión"
+    },
+    {
+      "id": "t4-privacidad",
+      "titulo": "T4 Privacidad y semillas",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:55:55.713Z",
+      "nota": "Privacidad adaptada y enlazada; semillas descartadas (volumen pequeño)"
+    }
+  ],
+  "permisos": {
+    "produccion": false,
+    "push": false
+  },
+  "pendientesCliente": [
+    "Decidir si la recepción debe ver las notas clínicas y el motivo de las citas (datos de salud); hoy los ven todos los usuarios.",
+    "Valorar si 'Pacientes sin volver' debe verlo también la recepción y si hace falta anotar que ya se llamó al paciente.",
+    "Confirmar plazos de conservación (historia clínica y registro de actividad) y valorar EIPD con su asesor/DPD; contrato de encargo con Vercel y Neon.",
+    "Razón social y datos del responsable del tratamiento (aparecen como PENDIENTE(cliente) en /privacidad).",
+    "Antes de producción: crear la cuenta de administración desde el propio despliegue (la primera que se registre será administradora) y configurar CRON_SECRET.",
+    "Fijar región UE en Vercel y Neon y confirmar los contratos de encargo; configurar rate limit compartido si se escala a varias instancias."
+  ],
+  "datos": {},
+  "contadorDecisiones": 4
+}

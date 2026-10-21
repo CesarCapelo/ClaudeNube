@@ -364,7 +364,7 @@ if (CON_LIGHTHOUSE) {
     });
     const rutasLh = RUTAS_LIGHTHOUSE
       ? String(RUTAS_LIGHTHOUSE).split(',')
-      : resultado.paginas.slice(0, 5).map((p) => p.ruta);
+      : resultado.paginas.slice(0, 15).map((p) => p.ruta);
     // Con sesión guardada, Lighthouse envía sus cookies para medir las páginas privadas y no la de acceso.
     let cabeceras;
     if (ESTADO_SESION && existsSync(ESTADO_SESION)) {

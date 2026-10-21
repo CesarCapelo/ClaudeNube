@@ -1,0 +1,68 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { sitio } from '../config/sitio';
+
+const analiticaSinCookies = sitio.analitica.proveedor !== 'ninguna';
+---
+
+<Legal
+  titulo="Política de cookies"
+  descripcion={`Qué cookies usa la web de ${sitio.nombre}, para qué sirven y cómo puedes gestionarlas o eliminarlas en tu navegador.`}
+>
+  <h2>1. Qué son las cookies</h2>
+  <p>
+    Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar
+    información sobre tu visita. Esta política cumple el artículo 22.2 de la LSSI y la guía sobre el
+    uso de cookies de la Agencia Española de Protección de Datos.
+  </p>
+
+  <h2>2. Cookies que usa este sitio</h2>
+  <p>
+    <strong>Este sitio web no instala cookies propias ni de terceros</strong> con fines analíticos,
+    publicitarios o de personalización.
+    {analiticaSinCookies &&
+      ' Para conocer cuántas personas nos visitan usamos un servicio de estadísticas que no utiliza cookies ni almacena datos que permitan identificarte.'}{' '}
+    Por eso no te mostramos un aviso de consentimiento de cookies.
+  </p>
+
+  <h2>3. Contenidos de terceros que se cargan solo si los pides</h2>
+  <p>
+    Algunos contenidos de terceros, como el mapa de Google Maps, no se cargan hasta que pulsas el
+    botón correspondiente. Al hacerlo, ese tercero puede instalar sus propias cookies, que se rigen
+    por su política:
+  </p>
+  <div class="tabla-legal" role="region" aria-label="Tabla de cookies" tabindex="0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Servicio</th>
+          <th scope="col">Titular</th>
+          <th scope="col">Cuándo se carga</th>
+          <th scope="col">Más información</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Google Maps</td>
+          <td>Google Ireland Limited</td>
+          <td>Solo al pulsar «Cargar mapa»</td>
+          <td>
+            <a
+              href="https://policies.google.com/technologies/cookies"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Política de cookies de Google
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>4. Cómo gestionar o borrar las cookies</h2>
+  <p>
+    Puedes consultar y eliminar las cookies desde la configuración de tu navegador: Chrome, Firefox,
+    Safari o Edge permiten bloquearlas o borrarlas en el apartado de privacidad.
+  </p>
+</Legal>

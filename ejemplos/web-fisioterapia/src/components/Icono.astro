@@ -1,0 +1,26 @@
+---
+// Iconos de Lucide (https://lucide.dev) incrustados como SVG: sin peticiones externas.
+// Uso: <Icono nombre="Phone" class="size-5" />. El nombre es el de lucide-static en PascalCase.
+import * as iconos from 'lucide-static';
+
+interface Props {
+  nombre: keyof typeof iconos;
+  class?: string;
+  /** Texto alternativo. Si se omite, el icono es decorativo y se oculta a lectores de pantalla. */
+  etiqueta?: string;
+}
+
+const { nombre, class: clase = 'size-5', etiqueta } = Astro.props;
+const accesibilidad = etiqueta
+  ? `role="img" aria-label="${etiqueta}"`
+  : 'aria-hidden="true" focusable="false"';
+// Se sustituyen la clase y el tamaño originales del <svg> raíz (no los de sus hijos).
+const svg = String(iconos[nombre] ?? '')
+  .trim()
+  .replace(/^<svg([^>]*)>/, (_, atributos: string) => {
+    const limpios = atributos.replace(/\s(width|height|class)="[^"]*"/g, '');
+    return `<svg class="${clase}" ${accesibilidad}${limpios}>`;
+  });
+---
+
+<Fragment set:html={svg} />

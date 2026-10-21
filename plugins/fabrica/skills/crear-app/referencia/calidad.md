@@ -18,6 +18,14 @@ Todas deben cumplirse para pasar a la publicación:
 | 10 | Interfaz | `fabrica:revisor-visual` sobre las capturas | Ningún criterio por debajo de 4 |
 | 11 | Móvil (si hay) | Verificación de `movil.md`, sección 4 | En verde |
 
+### Datos de demostración para la auditoría
+
+Una app vacía no se puede juzgar: las capturas solo muestran estados vacíos y Lighthouse mide pantallas sin contenido. Antes de la auditoría final, puebla su base de datos con datos ficticios realistas: de 15 a 30 registros por entidad principal, con todos los estados, nombres y textos verosímiles en castellano y fechas repartidas.
+
+- La forma recomendada es un proyecto de Playwright `demo` (`tests/e2e/demo.setup.ts`, dependiente de `preparacion`) que cree los datos a través de la interfaz. Ejecútalo contra el servidor de la auditoría antes de `auditar-ui.mjs`. Con `auditar-app.mjs`, añade ese proyecto al paso de preparación.
+- Pasa a `--rutas` también las páginas de detalle con datos (una ficha, una cita, la agenda de un día con citas), no solo los listados.
+- Los datos de demostración nunca se cargan en producción.
+
 ## 2. Encargos para los revisores
 
 Lánzalos en paralelo (varias llamadas a Agent en el mismo mensaje, sin segundo plano) cuando las puertas 1 a 6 estén en verde, con la auditoría ya hecha (las capturas están en `.fabrica/auditoria/capturas/`).

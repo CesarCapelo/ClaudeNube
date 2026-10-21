@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+import Icono from '../components/Icono.astro';
+import HuecoFoto from '../components/HuecoFoto.astro';
+import { whatsappEnlace } from '../config/sitio';
+
+const principios = [
+  {
+    icono: 'Timer',
+    titulo: 'Tiempo',
+    texto: 'Cincuenta minutos para escucharte, valorar y tratar, sin mirar el reloj.',
+  },
+  {
+    icono: 'Hand',
+    titulo: 'Manos y ejercicio',
+    texto: 'El tiempo de la sesión es para ti, no para esperar conectado a un aparato.',
+  },
+  {
+    icono: 'MessageCircle',
+    titulo: 'Explicación',
+    texto: 'Te cuento lo que encuentro y lo que propongo, y tú decides.',
+  },
+] as const;
+---
+
+<Base
+  titulo="Sobre mí, fisioterapeuta en Getafe"
+  descripcion="Soy Lucía Martín, fisioterapeuta en el Sector III de Getafe. Sesiones individuales de 50 minutos, siempre conmigo y sin máquinas."
+>
+  <section class="contenedor grid items-center gap-12 py-14 md:grid-cols-[1.2fr_1fr] md:py-24">
+    <div>
+      <p class="font-semibold text-marca-700">Sobre mí</p>
+      <h1 class="mt-4 text-4xl leading-[1.1] font-bold md:text-5xl">
+        Soy Lucía Martín, fisioterapeuta en Getafe
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-tinta-suave md:text-xl">
+        Atiendo en mi clínica del Sector III de Getafe, en sesiones individuales de 50 minutos.
+        Siempre soy yo quien te atiende: no pasas de mano en mano ni empiezas de cero cada vez que
+        vuelves.
+      </p>
+    </div>
+    <HuecoFoto descripcion="un retrato de Lucía" icono="UserRound" class="aspect-[4/5]" />
+  </section>
+
+  <section class="bg-superficie py-16 md:py-24" aria-labelledby="titulo-principios">
+    <div class="contenedor">
+      <h2 id="titulo-principios" class="text-3xl font-bold md:text-4xl">
+        Cómo trabajo
+      </h2>
+      <ul class="mt-10 grid gap-8 md:grid-cols-3">
+        {principios.map((p) => (
+          <li class="flex items-start gap-4">
+            <span class="inline-flex size-12 shrink-0 items-center justify-center rounded-xl bg-white text-marca-700 ring-1 ring-marca-200">
+              <Icono nombre={p.icono} class="size-6" />
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold">{p.titulo}</h3>
+              <p class="mt-1 text-tinta-suave">{p.texto}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="contenedor py-16 md:py-24" aria-labelledby="titulo-formacion">
+    <h2 id="titulo-formacion" class="text-3xl font-bold md:text-4xl">
+      Formación y colegiación
+    </h2>
+    <p class="mt-4 max-w-2xl text-lg text-tinta-suave">
+      PENDIENTE(cliente): formación, número de colegiada y colegio profesional.
+    </p>
+    <p class="mt-8 max-w-2xl text-lg">
+      Trabajo con tres líneas:{' '}
+      <a
+        class="font-medium text-marca-800 underline underline-offset-4"
+        href="/fisioterapia-deportiva"
+      >
+        fisioterapia deportiva
+      </a>
+      ,{' '}
+      <a class="font-medium text-marca-800 underline underline-offset-4" href="/suelo-pelvico">
+        suelo pélvico
+      </a>{' '}
+      y{' '}
+      <a
+        class="font-medium text-marca-800 underline underline-offset-4"
+        href="/dolor-de-espalda-y-cuello"
+      >
+        dolor de espalda y cuello
+      </a>
+      .
+    </p>
+  </section>
+
+  <section class="contenedor pb-8" aria-labelledby="titulo-cta">
+    <div class="rounded-[var(--radius-tarjeta)] bg-marca-900 px-8 py-14 text-center text-white md:px-16">
+      <h2 id="titulo-cta" class="text-3xl font-bold md:text-4xl">
+        Si quieres conocerme, escríbeme
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-marca-100">
+        Cuéntame qué te pasa y vemos si puedo ayudarte.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        {whatsappEnlace && (
+          <Boton href={whatsappEnlace} externo variante="acento">
+            Escribir por WhatsApp
+          </Boton>
+        )}
+        <Boton href="/contacto" variante="secundario">
+          Ver otras formas de contacto
+        </Boton>
+      </div>
+    </div>
+  </section>
+</Base>

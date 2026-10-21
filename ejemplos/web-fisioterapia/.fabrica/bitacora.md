@@ -1,0 +1,39 @@
+# Bitácora de Fisioterapia Lucía Martín
+
+- 2026-10-21 20:13 · entrevista · Proyecto iniciado
+- 2026-10-21 20:13 · entrevista · Permiso push: no
+- 2026-10-21 20:13 · entrevista · Permiso produccion: no
+- 2026-10-21 20:13 · entrevista · Modo autonomo
+- 2026-10-21 20:13 · preparacion · Comienza la fase: Preparación: requisitos, plan y proyecto base
+- 2026-10-21 20:15 · preparacion · Tarea preparacion → hecha: Base verificada en verde, sitio.ts, requisitos y plan
+- 2026-10-21 20:15 · investigacion · Comienza la fase: Investigación: web actual, competencia y palabras clave
+- 2026-10-21 20:15 · investigacion · Tarea investigacion → en_curso
+- 2026-10-21 20:16 · investigacion · Tarea investigacion → hecha: investigacion.md escrito por subagente con fuentes
+- 2026-10-21 20:17 · diseno · Comienza la fase: Diseño: dirección visual y sistema de diseño
+- 2026-10-21 20:17 · diseno · Tarea guia → en_curso
+- Fase diseño: capturas de la guía revisadas en móvil y escritorio; corregidos nav en 2 líneas y swatches. Rúbrica provisional ≥4.
+- 2026-10-21 20:18 · diseno · Tarea guia → hecha: Capturas móvil y escritorio revisadas; build y check en verde
+- 2026-10-21 20:18 · contenido · Comienza la fase: Contenido: textos y SEO de cada página
+- 2026-10-21 20:18 · contenido · Tarea contenido → en_curso
+- 2026-10-21 20:19 · contenido · Tarea contenido → hecha: contenido.md con title, meta, h1, secciones y FAQ de las 7 páginas
+- 2026-10-21 20:19 · construccion · Comienza la fase: Construcción de páginas y funcionalidades
+- 2026-10-21 20:19 · construccion · Tarea compartidas → en_curso
+- 2026-10-21 20:19 · construccion · Tarea compartidas → hecha: PaginaServicio, Preguntas, HuecoFoto, faq y servicios
+- 2026-10-21 20:22 · construccion · Tarea pag-inicio → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea pag-deportiva → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea pag-suelo → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea pag-espalda → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea pag-sobre → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea pag-contacto → hecha: verificar en verde, auditoría APTO, capturas revisadas
+- 2026-10-21 20:22 · construccion · Tarea legales → en_curso
+- 2026-10-21 20:22 · construccion · Tarea legales → hecha: Privacidad ajustada; cookies coherentes con mapa diferido y sin analítica
+- 2026-10-21 20:22 · calidad · Comienza la fase: Calidad: auditorías, revisiones y correcciones
+- 2026-10-21 20:22 · calidad · Tarea calidad → en_curso
+- 2026-10-21 20:32 · calidad · Tarea publicacion → hecha: Sin token de Netlify ni permiso de push/producción: no se publica; netlify.toml y docs/puesta-en-produccion.md listos
+- Calidad: 3 vueltas de revisores; Lighthouse 100x4 en 10 páginas, 49 tests, auditoría estricta APTO. Rúbrica visual 3,7 (no llega a 4,3; documentado).
+- 2026-10-21 20:43 · calidad · Calidad final: auditoría estricta APTO, Lighthouse 100 en 10 páginas indexables, 49 tests, visual 3,7/5 (bajo objetivo, documentado)
+- 2026-10-21 20:43 · calidad · Tarea calidad → hecha: verificar en verde; auditoría estricta APTO; Lighthouse 100; revisores sin severidad alta; visual 3,7 documentado
+- 2026-10-21 20:43 · entrega · Comienza la fase: Entrega: documentación e informe final
+- 2026-10-21 20:43 · entrega · Tarea entrega → en_curso
+- 2026-10-21 20:44 · entrega · Tarea entrega → hecha: ENTREGA.md, README y docs escritos; verificación final en verde; tag v1.0
+- 2026-10-21 20:44 · entrega · Proyecto entregado

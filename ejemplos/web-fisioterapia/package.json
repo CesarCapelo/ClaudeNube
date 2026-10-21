@@ -1,0 +1,40 @@
+{
+  "name": "web-cliente",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "espacios": "node scripts/comprobar-espacios.mjs src",
+    "test:e2e": "playwright test",
+    "imagenes": "node scripts/generar-imagenes.mjs",
+    "auditar": "node scripts/auditar-ui.mjs --url http://localhost:4321 --lighthouse",
+    "verificar": "npm run format:check && npm run espacios && npm run check && npm run build && npm run test:e2e"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "lucide-static": "^1.61.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "lighthouse": "^13.5.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "typescript": "^6.0.3"
+  }
+}

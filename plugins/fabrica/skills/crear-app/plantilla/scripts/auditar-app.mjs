@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 // Auditoría completa de la aplicación compilada, con sesión de administración.
 // 1. Arranca `next start` con una base de datos en memoria.
-// 2. Crea la cuenta administradora con la preparación de Playwright y guarda la sesión.
+// 2. Crea la cuenta administradora con la preparación de Playwright y guarda la sesión. Si el proyecto
+//    define un proyecto de Playwright «demo», lo ejecuta también para poblar datos de demostración.
 // 3. Ejecuta scripts/auditar-ui.mjs sobre las rutas indicadas (capturas, accesibilidad, Lighthouse…).
 // 4. Para el servidor.
 //
 // Uso: npm run build && node scripts/auditar-app.mjs [--rutas /panel,/clientes] [--lighthouse] [otras opciones de auditar-ui]
 // Requiere haber compilado antes (npm run build).
 import { spawn, spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 
 const PUERTO = process.env.PUERTO_PRUEBAS ?? '3100';
 const URL_BASE = `http://localhost:${PUERTO}`;
@@ -50,7 +52,9 @@ if (!listo) {
   process.exit(2);
 }
 
-const preparacion = spawnSync('npx', ['playwright', 'test', '--project=preparacion', '--reporter=line'], {
+const conDemo = /name:\s*['"]demo['"]/.test(readFileSync('playwright.config.ts', 'utf8'));
+const proyectos = ['--project=preparacion', ...(conDemo ? ['--project=demo'] : [])];
+const preparacion = spawnSync('npx', ['playwright', 'test', ...proyectos, '--reporter=line'], {
   env: entorno,
   stdio: 'inherit',
 });

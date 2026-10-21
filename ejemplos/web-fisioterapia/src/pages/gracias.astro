@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+import { sitio, telefonoEnlace, whatsappEnlace } from '../config/sitio';
+---
+
+<Base titulo="Mensaje enviado" noindex sinWhatsApp>
+  <section class="contenedor flex min-h-[50vh] flex-col justify-center py-20 text-center md:py-28">
+    <h1 class="text-4xl font-bold md:text-5xl">Gracias por escribirme</h1>
+    <p class="mx-auto mt-4 max-w-lg text-lg text-tinta-suave">
+      He recibido tu mensaje y te responderé lo antes posible.
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <Boton href="/">Volver al inicio</Boton>
+      <Boton href="/sobre-mi" variante="secundario">
+        Conocer quién te atiende
+      </Boton>
+    </div>
+    <p class="mt-10 text-tinta-suave">
+      ¿Prefieres hablar ya? Llama al{' '}
+      <a href={telefonoEnlace} class="font-semibold text-marca-800 underline underline-offset-4">
+        {sitio.contacto.telefono}
+      </a>
+      {whatsappEnlace && (
+        <>
+          {' '}
+          o escríbeme por{' '}
+          <a
+            href={whatsappEnlace}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-marca-800 underline underline-offset-4"
+          >
+            WhatsApp
+          </a>
+        </>
+      )}
+      .
+    </p>
+  </section>
+</Base>

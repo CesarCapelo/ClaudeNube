@@ -1,0 +1,61 @@
+---
+// Composición gráfica que ocupa el sitio de una foto real aún pendiente.
+// Cuando el cliente aporte la foto, se sustituye por <Image /> con las mismas proporciones.
+import type * as Iconos from 'lucide-static';
+import Icono from './Icono.astro';
+
+interface Props {
+  /** Qué foto se necesita (se muestra en la etiqueta y como texto alternativo). */
+  descripcion: string;
+  icono?: keyof typeof Iconos;
+  class?: string;
+  /** Composición alternativa para que dos huecos de la misma página no se repitan. */
+  variante?: 'a' | 'b' | 'c';
+}
+
+const { descripcion, icono = 'Leaf', class: clase = 'aspect-[4/3]', variante = 'a' } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'relative isolate overflow-hidden rounded-[var(--radius-tarjeta)] bg-gradient-to-br from-marca-100 via-marca-50 to-marca-200 ring-1 ring-marca-200',
+    clase,
+  ]}
+>
+  <svg
+    class:list={[
+      'absolute inset-0 -z-10 size-full',
+      variante === 'b' && '-scale-x-100 -scale-y-100',
+      variante === 'c' && '-scale-x-100',
+    ]}
+    viewBox="0 0 400 300"
+    preserveAspectRatio="xMidYMid slice"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="330" cy="40" r="110" fill="var(--color-marca-200)" opacity=".6" />
+    <circle cx="40" cy="290" r="130" fill="var(--color-marca-300)" opacity=".45" />
+    <path
+      d="M-20 210C60 170 120 250 200 215s150-60 230-20"
+      stroke="var(--color-marca-400)"
+      stroke-width="2"
+      opacity=".6"
+    />
+    <path
+      d="M-20 235C60 195 120 275 200 240s150-60 230-20"
+      stroke="var(--color-marca-400)"
+      stroke-width="2"
+      opacity=".35"
+    />
+    <circle cx="300" cy="215" r="7" fill="var(--color-acento-500)" />
+  </svg>
+  <div class="flex size-full flex-col items-center justify-center gap-4 p-6 text-center">
+    <span class="inline-flex size-16 items-center justify-center rounded-full bg-white/80 text-marca-700 shadow-sm">
+      <Icono nombre={icono} class="size-8" />
+    </span>
+    <figcaption class="max-w-[16rem] rounded-full bg-white/85 px-4 py-2 text-sm font-medium text-marca-900">
+      <Icono nombre="Camera" class="mr-1.5 inline size-4 align-text-bottom" />
+      Foto pendiente: {descripcion}
+    </figcaption>
+  </div>
+</figure>

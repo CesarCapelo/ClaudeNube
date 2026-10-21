@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+---
+
+<Base titulo="Página no encontrada" noindex>
+  <section class="contenedor py-24 text-center md:py-32">
+    <p class="font-semibold text-marca-700">Error 404</p>
+    <h1 class="mt-3 text-4xl font-bold md:text-5xl">No encontramos esta página</h1>
+    <p class="mx-auto mt-4 max-w-lg text-lg text-tinta-suave">
+      Puede que el enlace haya cambiado o que la página ya no exista.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <Boton href="/">Ir al inicio</Boton>
+      <Boton href="/contacto" variante="secundario">
+        Contactar
+      </Boton>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,39 @@
+---
+import type { Pregunta } from '../lib/faq';
+
+interface Props {
+  preguntas: Pregunta[];
+  id?: string;
+}
+
+const { preguntas, id = 'titulo-preguntas' } = Astro.props;
+---
+
+<section class="contenedor py-16 md:py-24" aria-labelledby={id}>
+  <div class="grid gap-10 md:grid-cols-[1fr_1.6fr]">
+    <div>
+      <h2 id={id} class="text-3xl font-bold md:text-4xl">
+        Preguntas frecuentes
+      </h2>
+      <p class="mt-4 max-w-sm text-tinta-suave">
+        Si te queda alguna duda, escríbeme y te respondo.
+      </p>
+    </div>
+    <div class="divide-y divide-borde rounded-[var(--radius-tarjeta)] border border-borde bg-white">
+      {preguntas.map((p) => (
+        <details class="group px-6 py-1">
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+            {p.pregunta}
+            <span
+              class="text-2xl leading-none text-marca-700 transition-transform group-open:rotate-45"
+              aria-hidden="true"
+            >
+              +
+            </span>
+          </summary>
+          <p class="pb-5 text-tinta-suave">{p.respuesta}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

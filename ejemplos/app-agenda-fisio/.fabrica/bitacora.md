@@ -1,0 +1,31 @@
+# Bitácora de Agenda Fisio
+
+- 2026-10-21 20:14 · entrevista · Proyecto iniciado
+- 2026-10-21 20:14 · entrevista · Permiso push: no
+- 2026-10-21 20:14 · entrevista · Permiso produccion: no
+- 2026-10-21 20:14 · entrevista · Modo autonomo
+- 2026-10-21 20:14 · especificacion · Comienza la fase: Especificación funcional
+- 2026-10-21 20:16 · especificacion · Arquitectura y plan escritos
+- 2026-10-21 20:16 · base · Comienza la fase: Proyecto base: autenticación, datos, CI y diseño
+- 2026-10-21 20:16 · base · Tarea base → en_curso
+- 2026-10-21 20:21 · base · Tarea equipo → hecha: Esquema, marca fisioterapeuta, rol y bloqueo con salvaguardas; pendiente de pruebas con H-módulos
+- 2026-10-21 20:21 · base · Tarea equipo → en_curso
+- 2026-10-21 20:21 · construccion · Comienza la fase: Construcción por funcionalidades
+- 2026-10-21 20:21 · construccion · Tarea h1-pacientes → en_curso
+- 2026-10-21 20:21 · construccion · Tarea h2-citas → en_curso
+- 2026-10-21 20:23 · construccion · Agentes pacientes y citas lanzados en worktrees
+- 2026-10-21 20:27 · construccion · Tarea h1-pacientes → hecha: Integración y e2e del agente pasan; falta e2e global
+- 2026-10-21 20:27 · construccion · Tarea h5-sin-volver → hecha: Integración RN5 (61/60/59 días) y e2e
+- 2026-10-21 20:27 · construccion · Tarea t2-exportar → hecha: e2e CSV 200/403/401
+- 2026-10-21 20:55 · construccion · Tarea equipo → hecha: Integración + e2e (alta, marca, rol, salvaguardas)
+- 2026-10-21 20:55 · construccion · Tarea h2-citas → hecha: Integración (solapes, concurrencia) + e2e
+- 2026-10-21 20:55 · construccion · Tarea h3-agenda → hecha: e2e día/semana + cambio de hora en integración
+- 2026-10-21 20:55 · construccion · Tarea h4-estados → hecha: Integración RN2 + e2e
+- 2026-10-21 20:55 · construccion · Tarea t3-actividad → hecha: e2e admin/user/sin sesión
+- 2026-10-21 20:55 · construccion · Tarea t4-privacidad → hecha: Privacidad adaptada y enlazada; semillas descartadas (volumen pequeño)
+- 2026-10-21 20:55 · construccion · Tarea base → hecha: npm run verificar en verde
+- 2026-10-21 20:55 · calidad · Comienza la fase: Calidad: tests, seguridad, auditorías y correcciones
+- 2026-10-21 21:09 · publicacion · Comienza la fase: Publicación de la versión de prueba
+- 2026-10-21 21:09 · publicacion · Sin permiso de despliegue: se deja configuración y guía
+- 2026-10-21 21:10 · entrega · Comienza la fase: Entrega: documentación e informe final
+- 2026-10-21 21:15 · entrega · Proyecto entregado

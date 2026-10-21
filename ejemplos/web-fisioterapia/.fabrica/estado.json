@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "skill": "crear-web",
+  "nombre": "Fisioterapia Lucía Martín",
+  "creado": "2026-10-21T18:13:33.755Z",
+  "actualizado": "2026-10-21T18:44:52.423Z",
+  "modo": "entregado",
+  "fase": "entrega",
+  "fases": [
+    {
+      "id": "entrevista",
+      "titulo": "Entrevista inicial",
+      "estado": "hecha"
+    },
+    {
+      "id": "preparacion",
+      "titulo": "Preparación: requisitos, plan y proyecto base",
+      "estado": "hecha"
+    },
+    {
+      "id": "investigacion",
+      "titulo": "Investigación: web actual, competencia y palabras clave",
+      "estado": "hecha"
+    },
+    {
+      "id": "diseno",
+      "titulo": "Diseño: dirección visual y sistema de diseño",
+      "estado": "hecha"
+    },
+    {
+      "id": "contenido",
+      "titulo": "Contenido: textos y SEO de cada página",
+      "estado": "hecha"
+    },
+    {
+      "id": "construccion",
+      "titulo": "Construcción de páginas y funcionalidades",
+      "estado": "hecha"
+    },
+    {
+      "id": "calidad",
+      "titulo": "Calidad: auditorías, revisiones y correcciones",
+      "estado": "hecha"
+    },
+    {
+      "id": "publicacion",
+      "titulo": "Publicación de la versión de prueba",
+      "estado": "hecha"
+    },
+    {
+      "id": "entrega",
+      "titulo": "Entrega: documentación e informe final",
+      "estado": "hecha"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "investigacion",
+      "titulo": "Investigación local y palabras clave",
+      "fase": "investigacion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:16:56.395Z",
+      "nota": "investigacion.md escrito por subagente con fuentes"
+    },
+    {
+      "id": "guia",
+      "titulo": "Dirección visual, tokens y guía de estilo",
+      "fase": "diseno",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:18:00.316Z",
+      "nota": "Capturas móvil y escritorio revisadas; build y check en verde"
+    },
+    {
+      "id": "contenido",
+      "titulo": "Textos de todas las páginas",
+      "fase": "contenido",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:19:33.691Z",
+      "nota": "contenido.md con title, meta, h1, secciones y FAQ de las 7 páginas"
+    },
+    {
+      "id": "compartidas",
+      "titulo": "Cabecera, pie y componentes de sección",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:19:52.499Z",
+      "nota": "PaginaServicio, Preguntas, HuecoFoto, faq y servicios"
+    },
+    {
+      "id": "pag-inicio",
+      "titulo": "Página de inicio",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.496Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "pag-deportiva",
+      "titulo": "Fisioterapia deportiva",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.571Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "pag-suelo",
+      "titulo": "Suelo pélvico",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.653Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "pag-espalda",
+      "titulo": "Dolor de espalda y cuello",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.748Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "pag-sobre",
+      "titulo": "Sobre mí",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.817Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "pag-contacto",
+      "titulo": "Contacto y gracias",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:17.880Z",
+      "nota": "verificar en verde, auditoría APTO, capturas revisadas"
+    },
+    {
+      "id": "legales",
+      "titulo": "Textos legales ajustados",
+      "fase": "construccion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:22:39.733Z",
+      "nota": "Privacidad ajustada; cookies coherentes con mapa diferido y sin analítica"
+    },
+    {
+      "id": "calidad",
+      "titulo": "Bucle de calidad y revisores",
+      "fase": "calidad",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:43:58.847Z",
+      "nota": "verificar en verde; auditoría estricta APTO; Lighthouse 100; revisores sin severidad alta; visual 3,7 documentado"
+    },
+    {
+      "id": "publicacion",
+      "titulo": "Preparar despliegue (sin publicar)",
+      "fase": "publicacion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:32:33.622Z",
+      "nota": "Sin token de Netlify ni permiso de push/producción: no se publica; netlify.toml y docs/puesta-en-produccion.md listos"
+    },
+    {
+      "id": "entrega",
+      "titulo": "Entrega y documentación",
+      "fase": "entrega",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:44:52.260Z",
+      "nota": "ENTREGA.md, README y docs escritos; verificación final en verde; tag v1.0"
+    },
+    {
+      "id": "preparacion",
+      "titulo": "Preparación del proyecto",
+      "fase": "preparacion",
+      "estado": "hecha",
+      "actualizado": "2026-10-21T18:15:29.139Z",
+      "nota": "Base verificada en verde, sitio.ts, requisitos y plan"
+    }
+  ],
+  "permisos": {
+    "produccion": false,
+    "push": false
+  },
+  "pendientesCliente": [
+    "Fotos de la clínica y de Lucía (hay huecos marcados)",
+    "Número de colegiada y colegio profesional (aviso legal)",
+    "Razón social o nombre completo del titular, NIF y domicilio (aviso legal y privacidad)",
+    "Comprar el dominio fisioluciamartin.es y crear el sitio en Netlify",
+    "Confirmar o sustituir el monograma LM provisional por su logotipo",
+    "Número de autorización sanitaria del centro (publicidad sanitaria, RD 1277/2003)",
+    "Validar los textos sanitarios y «Sobre mí» (sin promesas de curación) y confirmar si trabaja con seguros/mutuas y si exigen derivación",
+    "Revisión de los textos legales por su asesor y política específica para la historia clínica (datos de salud en consulta)"
+  ],
+  "datos": {},
+  "contadorDecisiones": 11
+}

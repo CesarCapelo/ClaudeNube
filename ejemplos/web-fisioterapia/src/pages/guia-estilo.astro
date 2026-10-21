@@ -1,0 +1,112 @@
+---
+// Guía de estilo interna: muestra los tokens y componentes. No se indexa.
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+import Icono from '../components/Icono.astro';
+import HuecoFoto from '../components/HuecoFoto.astro';
+
+const tonos = [
+  ['50', 'bg-marca-50'],
+  ['100', 'bg-marca-100'],
+  ['200', 'bg-marca-200'],
+  ['300', 'bg-marca-300'],
+  ['400', 'bg-marca-400'],
+  ['500', 'bg-marca-500'],
+  ['600', 'bg-marca-600'],
+  ['700', 'bg-marca-700'],
+  ['800', 'bg-marca-800'],
+  ['900', 'bg-marca-900'],
+  ['950', 'bg-marca-950'],
+] as const;
+const neutros = [
+  ['fondo', 'bg-fondo'],
+  ['superficie', 'bg-superficie'],
+  ['borde', 'bg-borde'],
+  ['tinta-suave', 'bg-tinta-suave'],
+  ['tinta', 'bg-tinta'],
+  ['acento-500', 'bg-acento-500'],
+  ['acento-600', 'bg-acento-600'],
+] as const;
+---
+
+<Base
+  titulo="Guía de estilo"
+  descripcion="Guía de estilo interna de la web: tipografía, colores, botones, tarjetas y formularios."
+  noindex
+>
+  <section class="contenedor py-16">
+    <p class="font-semibold text-marca-700">Guía de estilo</p>
+    <h1 class="mt-3 text-4xl font-bold md:text-6xl">Cercana, cálida y profesional</h1>
+    <p class="mt-6 max-w-xl text-lg text-tinta-suave md:text-xl">
+      Figtree para los títulos e Inter para el texto, sobre un verde salvia con un toque terracota.
+    </p>
+
+    <h2 class="mt-16 text-3xl font-bold md:text-4xl">Tipografía</h2>
+    <div class="mt-6 space-y-4">
+      <p class="text-4xl font-bold md:text-6xl">Titular h1</p>
+      <p class="text-3xl font-bold md:text-4xl">Titular h2</p>
+      <p class="text-xl font-semibold md:text-2xl">Titular h3</p>
+      <p class="max-w-prose text-base leading-relaxed md:text-lg">
+        Texto de cuerpo. Sesiones individuales de cincuenta minutos, siempre con la misma
+        fisioterapeuta, en el Sector III de Getafe.
+      </p>
+      <p class="max-w-prose text-tinta-suave">Texto secundario para aclaraciones y notas.</p>
+    </div>
+
+    <h2 class="mt-16 text-3xl font-bold md:text-4xl">Colores</h2>
+    <ul class="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-6 md:grid-cols-11">
+      {tonos.map(([tono, clase]) => (
+        <li>
+          <div class:list={['h-14 rounded-xl ring-1 ring-borde', clase]}></div>
+          <p class="mt-1 text-sm text-tinta-suave">marca-{tono}</p>
+        </li>
+      ))}
+    </ul>
+    <ul class="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-7">
+      {neutros.map(([nombre, clase]) => (
+        <li>
+          <div class:list={['h-14 rounded-xl ring-1 ring-borde', clase]}></div>
+          <p class="mt-1 text-sm text-tinta-suave">{nombre}</p>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="mt-16 text-3xl font-bold md:text-4xl">Botones</h2>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <Boton href="/contacto">Pedir cita</Boton>
+      <Boton href="/contacto" variante="secundario">
+        <Icono nombre="Phone" class="size-5" />
+        Llamar
+      </Boton>
+      <Boton href="/contacto" variante="fantasma">
+        Ver más
+      </Boton>
+    </div>
+
+    <h2 class="mt-16 text-3xl font-bold md:text-4xl">Tarjetas y huecos de foto</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      <article class="rounded-[var(--radius-tarjeta)] border border-borde bg-white p-7">
+        <span class="inline-flex size-12 items-center justify-center rounded-xl bg-marca-50 text-marca-700">
+          <Icono nombre="Footprints" class="size-6" />
+        </span>
+        <h3 class="mt-5 text-xl font-semibold">Tarjeta de servicio</h3>
+        <p class="mt-2 text-tinta-suave">Qué resuelve el servicio, en una o dos frases.</p>
+        <p class="mt-5 font-semibold text-marca-800">Ver el servicio →</p>
+      </article>
+      <HuecoFoto descripcion="la sala de tratamiento" icono="Armchair" />
+    </div>
+
+    <h2 class="mt-16 text-3xl font-bold md:text-4xl">Sección oscura</h2>
+    <div class="mt-6 rounded-[var(--radius-tarjeta)] bg-marca-900 px-8 py-14 text-center text-white md:px-16">
+      <p class="text-3xl font-bold md:text-4xl">Cuéntame qué te pasa</p>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-marca-100">
+        Te respondo en cuanto termino la sesión.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <Boton href="/contacto" variante="secundario">
+          Pedir cita
+        </Boton>
+      </div>
+    </div>
+  </section>
+</Base>

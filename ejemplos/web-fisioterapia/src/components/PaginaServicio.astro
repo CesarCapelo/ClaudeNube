@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import Boton from './Boton.astro';
+import Icono from './Icono.astro';
+import HuecoFoto from './HuecoFoto.astro';
+import Preguntas from './Preguntas.astro';
+import { faqJsonLd } from '../lib/faq';
+import { servicios, type Servicio } from '../config/servicios';
+import { sitio, telefonoEnlace, whatsappEnlace } from '../config/sitio';
+
+interface Props {
+  servicio: Servicio;
+}
+
+const { servicio } = Astro.props;
+const otros = servicios.filter((s) => s.ruta !== servicio.ruta);
+const url = `${sitio.url}${servicio.ruta}`;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: servicio.nombre,
+    description: servicio.descripcion,
+    url,
+    ...(sitio.direccion && { areaServed: { '@type': 'City', name: sitio.direccion.localidad } }),
+    provider: { '@id': `${sitio.url}/#negocio` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${sitio.url}/` },
+      { '@type': 'ListItem', position: 2, name: servicio.nombre, item: url },
+    ],
+  },
+  faqJsonLd(servicio.preguntas),
+];
+---
+
+<Base titulo={servicio.titulo} descripcion={servicio.descripcion} jsonLd={jsonLd}>
+  <section class="relative overflow-hidden">
+    <div
+      class="absolute inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_80%_-10%,var(--color-marca-100),transparent)]"
+      aria-hidden="true"
+    ></div>
+    <div class="contenedor grid items-center gap-12 py-14 md:grid-cols-[1.2fr_1fr] md:py-24">
+      <div>
+        <p class="flex items-center gap-2 font-semibold text-marca-700">
+          <Icono nombre={servicio.icono} class="size-5" />
+          {servicio.nombre}
+        </p>
+        <h1 class="mt-4 text-4xl leading-[1.1] font-bold md:text-5xl">{servicio.h1}</h1>
+        <p class="mt-6 max-w-xl text-lg text-tinta-suave md:text-xl">{servicio.intro}</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          {whatsappEnlace && (
+            <Boton href={whatsappEnlace} externo>
+              Pedir cita por WhatsApp
+            </Boton>
+          )}
+          <Boton href={telefonoEnlace} variante="secundario">
+            <Icono nombre="Phone" class="size-5" />
+            Llamar
+          </Boton>
+        </div>
+      </div>
+      <HuecoFoto
+        descripcion={servicio.hueco}
+        icono={servicio.icono}
+        variante={servicio.varianteHueco}
+      />
+    </div>
+  </section>
+
+  <section class="bg-superficie py-16 md:py-24" aria-labelledby="titulo-interesa">
+    <div class="contenedor grid gap-10 md:grid-cols-[1fr_1.4fr]">
+      <h2 id="titulo-interesa" class="text-3xl font-bold md:text-4xl">
+        Te puede interesar si…
+      </h2>
+      <ul class="space-y-4">
+        {servicio.interesa.map((texto) => (
+          <li class="flex items-start gap-4 text-lg">
+            <span class="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-marca-100 text-marca-800">
+              <Icono nombre="Check" class="size-5" />
+            </span>
+            {texto}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="contenedor py-16 md:py-24" aria-labelledby="titulo-sesion">
+    <h2 id="titulo-sesion" class="text-3xl font-bold md:text-4xl">
+      Cómo es la sesión
+    </h2>
+    <ol class="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+      {servicio.sesion.map((paso, i) => (
+        <li class="flex gap-5">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-marca-700 font-display text-lg font-bold text-white">
+            {i + 1}
+          </span>
+          <div>
+            <h3 class="text-xl font-semibold">{paso.titulo}</h3>
+            <p class="mt-1 text-tinta-suave">{paso.texto}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    {servicio.aviso && (
+      <p class="mt-10 max-w-2xl rounded-xl bg-marca-50 p-5 text-marca-900">{servicio.aviso}</p>
+    )}
+  </section>
+
+  <section class="contenedor" aria-labelledby="titulo-por-que">
+    <div class="rounded-[var(--radius-tarjeta)] bg-marca-50 px-8 py-12 ring-1 ring-marca-200 ring-inset md:px-14 md:py-16">
+      <h2 id="titulo-por-que" class="text-3xl font-bold md:text-4xl">
+        Lo que encontrarás aquí
+      </h2>
+      <ul class="mt-8 grid gap-6 md:grid-cols-3">
+        {servicio.porQue.map((texto) => (
+          <li class="flex items-start gap-3 text-lg">
+            <span class="mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-marca-700 text-white">
+              <Icono nombre="Check" class="size-4" />
+            </span>
+            {texto}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Preguntas preguntas={servicio.preguntas} />
+
+  <section class="contenedor pb-8" aria-labelledby="titulo-cta">
+    <div class="rounded-[var(--radius-tarjeta)] bg-marca-900 px-8 py-14 text-center text-white md:px-16">
+      <h2 id="titulo-cta" class="text-3xl font-bold md:text-4xl">
+        Cuéntame qué te pasa
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-marca-100">
+        Escríbeme y buscamos un hueco que te vaya bien.
+      </p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        {whatsappEnlace && (
+          <Boton href={whatsappEnlace} externo variante="acento">
+            Pedir cita por WhatsApp
+          </Boton>
+        )}
+        <Boton href={telefonoEnlace} variante="secundario">
+          <Icono nombre="Phone" class="size-5" />
+          Llamar al {sitio.contacto.telefono}
+        </Boton>
+      </div>
+    </div>
+    <nav aria-label="Otros servicios" class="mt-8">
+      <ul class="flex flex-wrap justify-center gap-x-8 gap-y-1">
+        {otros.map((s) => (
+          <li>
+            <a
+              href={s.ruta}
+              class="inline-flex min-h-11 items-center font-medium text-marca-800 underline decoration-marca-300 underline-offset-4 hover:text-marca-900"
+            >
+              {s.nombre} →
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href="/sobre-mi"
+            class="inline-flex min-h-11 items-center font-medium text-marca-800 underline decoration-marca-300 underline-offset-4 hover:text-marca-900"
+          >
+            Quién te atiende →
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</Base>

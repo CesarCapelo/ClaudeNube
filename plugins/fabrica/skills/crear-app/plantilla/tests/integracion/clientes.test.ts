@@ -24,7 +24,10 @@ beforeAll(async () => {
 
 describe('capa de datos de clientes', () => {
   it('crea y recupera un cliente', async () => {
-    const cliente = await crearCliente({ nombre: 'Taller Gómez', email: null, telefono: null, notas: null }, miembro);
+    const cliente = await crearCliente(
+      { nombre: 'Taller Gómez', email: null, telefono: null, notas: null },
+      miembro,
+    );
     expect(await obtenerCliente(cliente.id)).toMatchObject({ nombre: 'Taller Gómez', creadoPor: miembro.id });
   });
 
@@ -37,7 +40,10 @@ describe('capa de datos de clientes', () => {
   });
 
   it('solo la administración puede eliminar', async () => {
-    const cliente = await crearCliente({ nombre: 'Para borrar', email: null, telefono: null, notas: null }, miembro);
+    const cliente = await crearCliente(
+      { nombre: 'Para borrar', email: null, telefono: null, notas: null },
+      miembro,
+    );
     await expect(eliminarCliente(cliente.id, miembro)).rejects.toBeInstanceOf(ErrorPermiso);
     await eliminarCliente(cliente.id, admin);
     expect(await obtenerCliente(cliente.id)).toBeNull();
