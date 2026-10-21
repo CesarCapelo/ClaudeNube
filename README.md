@@ -95,7 +95,7 @@ Para dejarlo trabajando sin mirar, Claude no debe quedarse esperando a que aprue
 
 - **En la nube** (recomendado para dejarlo horas): la sesión corre en una máquina aislada. Elige un modo de permisos que no pregunte al crear la sesión.
 - **En local, dentro de un contenedor o máquina virtual**: `claude --dangerously-skip-permissions`. Los hooks de la fábrica siguen bloqueando las acciones peligrosas.
-- **En local, en tu ordenador de trabajo**: `claude --permission-mode acceptEdits`. Las plantillas incluyen en `.claude/settings.json` una lista de comandos permitidos (npm, npx, node, git sin push…) que evita la mayoría de preguntas.
+- **En local, en tu ordenador de trabajo**: `claude --permission-mode acceptEdits`. Las plantillas incluyen en `.claude/settings.json` una lista de comandos permitidos (npm, npx, node, git sin push…) que evita la mayoría de preguntas. Claude Code solo la aplica cuando has aceptado el aviso de confianza de la carpeta; ábrela una vez en modo interactivo y acéptalo.
 
 Mantén el ordenador encendido y sin suspensión mientras trabaja. Un proyecto web suele tardar entre 1 y 3 horas; una aplicación, de 3 a 10 horas, según su tamaño y los límites de uso de tu plan.
 
