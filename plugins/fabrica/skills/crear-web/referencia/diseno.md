@@ -91,6 +91,8 @@ Donde haga falta una foto real que aún no existe, usa un hueco con buen aspecto
 
 Puntúa cada captura (móvil y escritorio de cada página) de 1 a 5 en cada criterio. Objetivo: **nada por debajo de 4** y una media de 4,3 o más. Anota las puntuaciones y los cambios en la bitácora.
 
+Si las fotos reales son un pendiente del cliente, los criterios 6 (Imagen) y 8 (Personalidad) se puntúan por lo que sí depende de la fábrica: la calidad y variedad de las composiciones y de los huecos, y la coherencia con la dirección visual. La falta de fotos no baja la nota, pero sí se menciona en la entrega.
+
 | # | Criterio | Qué es un 5 |
 | --- | --- | --- |
 | 1 | Primera impresión | En 5 segundos se entiende quién es, qué ofrece, dónde y cómo contactar, también en móvil sin hacer scroll |

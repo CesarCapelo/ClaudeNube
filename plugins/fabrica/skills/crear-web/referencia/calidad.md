@@ -88,7 +88,7 @@ imágenes sin dimensiones u optimización, scripts de terceros sin declarar, y c
 Clasifica cada hallazgo como alta, media o baja, con fichero, línea y arreglo propuesto.
 ```
 
-Integra los hallazgos: arregla todo lo de severidad alta y media, y lo bajo que sea barato. Registra como decisión lo que descartes y por qué.
+Integra los hallazgos: arregla todo lo de severidad alta y media, y lo bajo que sea barato. Registra como decisión lo que descartes y por qué. **Después de corregir, vuelve a generar las capturas y a pedir la puntuación visual**: la nota que va a la entrega es la de la versión final, no la de una vuelta anterior.
 
 ## 4. Pruebas adicionales que se añaden a `tests/sitio.spec.ts`
 
