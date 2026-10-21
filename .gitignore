@@ -1,3 +1,14 @@
+# Solo se versionan las piezas de la fábrica. Cualquier otra carpeta de primer nivel
+# (por ejemplo, un proyecto de prueba creado con /fabrica:crear-web aquí) queda fuera.
+/*
+!/.gitignore
+!/.claude-plugin/
+!/plugins/
+!/plantillas/
+!/ejemplos/
+!/README.md
+!/instalar.mjs
+
 node_modules/
 dist/
 .astro/
