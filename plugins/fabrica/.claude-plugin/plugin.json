@@ -1,0 +1,12 @@
+{
+  "name": "fabrica",
+  "displayName": "Fábrica de webs y aplicaciones",
+  "version": "1.0.0",
+  "description": "Producción autónoma de webs para pymes (/fabrica:crear-web) y de aplicaciones a medida (/fabrica:crear-app): entrevista inicial y trabajo sin supervisión hasta entregar un producto verificado y documentado.",
+  "author": {
+    "name": "César Capelo"
+  },
+  "repository": "https://github.com/CesarCapelo/ClaudeNube",
+  "license": "UNLICENSED",
+  "keywords": ["web", "aplicaciones", "astro", "nextjs", "pymes", "autonomo"]
+}

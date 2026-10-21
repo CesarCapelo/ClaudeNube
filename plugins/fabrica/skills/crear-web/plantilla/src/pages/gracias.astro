@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+---
+
+<Base titulo="Mensaje enviado" noindex>
+  <section class="contenedor py-24 text-center md:py-32">
+    <h1 class="text-4xl font-bold md:text-5xl">Gracias por escribirnos</h1>
+    <p class="mx-auto mt-4 max-w-lg text-lg text-tinta-suave">
+      Hemos recibido tu mensaje y te responderemos lo antes posible.
+    </p>
+    <div class="mt-8 flex justify-center">
+      <Boton href="/">Volver al inicio</Boton>
+    </div>
+  </section>
+</Base>

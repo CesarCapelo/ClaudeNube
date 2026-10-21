@@ -1,0 +1,104 @@
+---
+import { sitio, direccionEnUnaLinea, telefonoEnlace } from '../config/sitio';
+import Icono from './Icono.astro';
+
+const anio = new Date().getFullYear();
+const redes = Object.entries(sitio.redes).filter(([, url]) => Boolean(url));
+const nombresRedes: Record<string, string> = {
+  instagram: 'Instagram',
+  facebook: 'Facebook',
+  linkedin: 'LinkedIn',
+  youtube: 'YouTube',
+  tiktok: 'TikTok',
+};
+---
+
+<footer class="mt-24 border-t border-borde bg-superficie">
+  <div class="contenedor grid gap-10 py-14 md:grid-cols-3">
+    <div>
+      <p class="text-lg font-bold">{sitio.nombre}</p>
+      <p class="mt-2 max-w-xs text-tinta-suave">{sitio.eslogan}</p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold tracking-wide text-tinta uppercase">Contacto</h2>
+      <ul class="mt-4 space-y-3 text-tinta-suave">
+        <li class="flex items-start gap-3">
+          <Icono nombre="Phone" class="mt-0.5 size-5 shrink-0" />
+          <a href={telefonoEnlace} class="hover:text-tinta">
+            {sitio.contacto.telefono}
+          </a>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icono nombre="Mail" class="mt-0.5 size-5 shrink-0" />
+          <a href={`mailto:${sitio.contacto.email}`} class="hover:text-tinta">
+            {sitio.contacto.email}
+          </a>
+        </li>
+        {direccionEnUnaLinea && (
+          <li class="flex items-start gap-3">
+            <Icono nombre="MapPin" class="mt-0.5 size-5 shrink-0" />
+            <span>{direccionEnUnaLinea}</span>
+          </li>
+        )}
+        {sitio.horario.map((h) => (
+          <li class="flex items-start gap-3">
+            <Icono nombre="Clock" class="mt-0.5 size-5 shrink-0" />
+            <span>
+              {h.dias}: {h.horas}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      {redes.length > 0 && (
+        <>
+          <h2 class="text-sm font-semibold tracking-wide text-tinta uppercase">Síguenos</h2>
+          <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-tinta-suave">
+            {redes.map(([red, url]) => (
+              <li>
+                <a href={url} class="hover:text-tinta" target="_blank" rel="noopener noreferrer">
+                  {nombresRedes[red] ?? red}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  </div>
+
+  <div class="border-t border-borde">
+    <div class="contenedor flex flex-col gap-4 py-6 text-sm text-tinta-suave md:flex-row md:items-center md:justify-between">
+      <p>
+        © {anio} {sitio.nombre}
+      </p>
+      <nav aria-label="Legal">
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          <li>
+            <a href="/aviso-legal" class="hover:text-tinta">
+              Aviso legal
+            </a>
+          </li>
+          <li>
+            <a href="/politica-privacidad" class="hover:text-tinta">
+              Privacidad
+            </a>
+          </li>
+          <li>
+            <a href="/politica-cookies" class="hover:text-tinta">
+              Cookies
+            </a>
+          </li>
+          <li>
+            <a href="/accesibilidad" class="hover:text-tinta">
+              Accesibilidad
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

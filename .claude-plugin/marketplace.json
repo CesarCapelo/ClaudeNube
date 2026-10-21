@@ -1,0 +1,14 @@
+{
+  "name": "fabrica-ia",
+  "description": "Herramientas internas de la empresa para producir webs y aplicaciones con Claude Code",
+  "owner": {
+    "name": "César Capelo"
+  },
+  "plugins": [
+    {
+      "name": "fabrica",
+      "source": "./plugins/fabrica",
+      "description": "Skills crear-web y crear-app, agentes revisores y hooks de trabajo autónomo"
+    }
+  ]
+}

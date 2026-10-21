@@ -1,0 +1,78 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { sitio } from '../config/sitio';
+
+const { titular } = sitio;
+---
+
+<Legal
+  titulo="Aviso legal"
+  descripcion={`Aviso legal de ${sitio.nombre}: datos del titular, condiciones de uso, propiedad intelectual y responsabilidad.`}
+>
+  <h2>1. Datos identificativos</h2>
+  <p>
+    En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información
+    y de comercio electrónico (LSSI), se informa de los datos del titular de este sitio web:
+  </p>
+  <ul>
+    <li>Titular: {titular.razonSocial}</li>
+    <li>NIF: {titular.nif}</li>
+    <li>Domicilio: {titular.domicilio}</li>
+    <li>
+      Correo electrónico: <a href={`mailto:${titular.email}`}>{titular.email}</a>
+    </li>
+    <li>Teléfono: {sitio.contacto.telefono}</li>
+    {titular.registro && <li>Datos registrales: {titular.registro}</li>}
+    {titular.profesionRegulada && <li>Profesión regulada: {titular.profesionRegulada}</li>}
+  </ul>
+
+  <h2>2. Objeto y aceptación</h2>
+  <p>
+    Este aviso legal regula el uso del sitio web {sitio.url}. Navegar por él atribuye la condición
+    de persona usuaria e implica la aceptación de estas condiciones. Si no estás de acuerdo con
+    ellas, te pedimos que no utilices el sitio.
+  </p>
+
+  <h2>3. Condiciones de uso</h2>
+  <p>
+    Te comprometes a usar el sitio y sus contenidos de forma lícita, sin dañar la imagen, los
+    intereses ni los derechos del titular o de terceros, y sin introducir programas, virus o
+    cualquier otro elemento que pueda causar daños en los sistemas.
+  </p>
+
+  <h2>4. Propiedad intelectual e industrial</h2>
+  <p>
+    Los textos, imágenes, diseño, logotipos, código y demás contenidos de este sitio pertenecen al
+    titular o a terceros que han autorizado su uso. Queda prohibida su reproducción, distribución,
+    comunicación pública o transformación sin autorización expresa, salvo para uso personal y
+    privado.
+  </p>
+
+  <h2>5. Responsabilidad</h2>
+  <p>
+    El titular procura que la información del sitio sea correcta y esté actualizada, pero no
+    garantiza la ausencia de errores ni la disponibilidad ininterrumpida del sitio. No se hace
+    responsable de los daños derivados de un uso indebido del sitio ni de interrupciones causadas
+    por terceros o por causas de fuerza mayor.
+  </p>
+
+  <h2>6. Enlaces a otros sitios</h2>
+  <p>
+    Los enlaces a sitios de terceros se ofrecen solo como información. El titular no controla esos
+    sitios y no responde de sus contenidos ni de sus políticas de privacidad.
+  </p>
+
+  <h2>7. Protección de datos y cookies</h2>
+  <p>
+    El tratamiento de datos personales se explica en la{' '}
+    <a href="/politica-privacidad">política de privacidad</a>, y el uso de cookies, en la{' '}
+    <a href="/politica-cookies">política de cookies</a>.
+  </p>
+
+  <h2>8. Legislación aplicable y jurisdicción</h2>
+  <p>
+    Estas condiciones se rigen por la legislación española. Para cualquier controversia, las partes
+    se someten a los juzgados y tribunales que correspondan conforme a la ley; cuando la persona
+    usuaria sea consumidora, serán los de su domicilio.
+  </p>
+</Legal>

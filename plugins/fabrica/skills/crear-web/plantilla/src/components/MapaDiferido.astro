@@ -1,0 +1,53 @@
+---
+// Mapa que no carga Google Maps (ni sus cookies) hasta que la persona lo pide.
+// Evita tener que pedir consentimiento de cookies por el simple hecho de mostrar el mapa.
+import { sitio, direccionEnUnaLinea } from '../config/sitio';
+
+const consulta = encodeURIComponent(
+  sitio.geo ? `${sitio.geo.lat},${sitio.geo.lng}` : `${sitio.nombre}, ${direccionEnUnaLinea}`,
+);
+const urlMapa = `https://www.google.com/maps?q=${consulta}&output=embed`;
+const urlAbrir = `https://www.google.com/maps/search/?api=1&query=${consulta}`;
+---
+
+<div
+  class="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-tarjeta)] bg-superficie"
+  data-mapa={urlMapa}
+>
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
+    <p class="max-w-sm text-tinta-suave">
+      Al cargar el mapa, Google puede instalar cookies y recibir tu dirección IP.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <button
+        type="button"
+        class="min-h-11 rounded-full bg-marca-700 px-5 py-2.5 font-semibold text-white hover:bg-marca-800"
+        data-cargar-mapa
+      >
+        Cargar mapa
+      </button>
+      <a
+        href={urlAbrir}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="min-h-11 rounded-full px-5 py-2.5 font-semibold text-marca-800 ring-1 ring-marca-200 ring-inset hover:bg-marca-50"
+      >
+        Abrir en Google Maps
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mapa]').forEach((contenedor) => {
+    contenedor.querySelector('[data-cargar-mapa]')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = contenedor.dataset.mapa!;
+      iframe.title = 'Mapa de ubicación';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.className = 'absolute inset-0 size-full border-0';
+      contenedor.replaceChildren(iframe);
+    });
+  });
+</script>

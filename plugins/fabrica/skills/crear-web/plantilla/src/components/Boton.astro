@@ -1,0 +1,29 @@
+---
+interface Props {
+  href: string;
+  variante?: 'primario' | 'secundario' | 'fantasma';
+  class?: string;
+  externo?: boolean;
+}
+
+const { href, variante = 'primario', class: clase = '', externo = false } = Astro.props;
+
+const estilos = {
+  primario:
+    'bg-marca-700 text-white hover:bg-marca-800 shadow-sm shadow-marca-900/10 focus-visible:outline-marca-500',
+  secundario: 'bg-white text-marca-800 ring-1 ring-inset ring-marca-200 hover:bg-marca-50',
+  fantasma: 'text-marca-800 hover:bg-marca-50',
+};
+---
+
+<a
+  href={href}
+  class:list={[
+    'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors',
+    estilos[variante],
+    clase,
+  ]}
+  {...(externo && { target: '_blank', rel: 'noopener noreferrer' })}
+>
+  <slot />
+</a>

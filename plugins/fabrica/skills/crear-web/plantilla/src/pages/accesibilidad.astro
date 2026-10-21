@@ -1,0 +1,40 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { sitio } from '../config/sitio';
+---
+
+<Legal
+  titulo="Declaración de accesibilidad"
+  descripcion={`Compromiso de accesibilidad de la web de ${sitio.nombre} y cómo comunicarnos cualquier barrera.`}
+>
+  <p>
+    {sitio.nombre} se compromete a que su sitio web sea accesible para todas las personas, conforme
+    a las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2, nivel AA.
+  </p>
+
+  <h2>1. Medidas aplicadas</h2>
+  <ul>
+    <li>
+      Estructura de encabezados y regiones que facilita la navegación con lectores de pantalla.
+    </li>
+    <li>Contraste de color suficiente entre el texto y el fondo.</li>
+    <li>Navegación completa con teclado y foco visible.</li>
+    <li>Textos alternativos en las imágenes con información.</li>
+    <li>Formularios con etiquetas asociadas y mensajes de error comprensibles.</li>
+    <li>Diseño adaptable a móviles y al aumento del tamaño del texto.</li>
+    <li>Respeto de la preferencia de movimiento reducido del sistema.</li>
+  </ul>
+
+  <h2>2. Evaluación</h2>
+  <p>
+    El sitio se ha revisado con herramientas automáticas (axe y Lighthouse) y con pruebas manuales
+    de navegación por teclado antes de su publicación.
+  </p>
+
+  <h2>3. Comunícanos cualquier barrera</h2>
+  <p>
+    Si encuentras algún contenido que no puedes usar, escríbenos a{' '}
+    <a href={`mailto:${sitio.contacto.email}`}>{sitio.contacto.email}</a> o llámanos al{' '}
+    {sitio.contacto.telefono}. Te responderemos y te facilitaremos la información por otro medio.
+  </p>
+</Legal>

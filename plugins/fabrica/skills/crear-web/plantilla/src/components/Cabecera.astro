@@ -1,0 +1,102 @@
+---
+import { sitio } from '../config/sitio';
+import Boton from './Boton.astro';
+
+const rutaActual = Astro.url.pathname.replace(/\/$/, '') || '/';
+const esActual = (href: string) =>
+  href === '/' ? rutaActual === '/' : rutaActual.startsWith(href);
+---
+
+<header class="sticky top-0 z-40 border-b border-borde/70 bg-fondo/90 backdrop-blur">
+  <div class="contenedor flex h-16 items-center justify-between gap-6 md:h-20">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight text-tinta">
+      <img src="/favicon.svg" alt="" width="32" height="32" class="size-8" />
+      <span>{sitio.nombre}</span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden md:block">
+      <ul class="flex items-center gap-1">
+        {sitio.navegacion.map((enlace) => (
+          <li>
+            <a
+              href={enlace.href}
+              aria-current={esActual(enlace.href) ? 'page' : undefined}
+              class="rounded-full px-4 py-2 text-[0.95rem] font-medium text-tinta-suave transition-colors hover:text-tinta aria-[current=page]:text-marca-800"
+            >
+              {enlace.texto}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="hidden md:block">
+      <Boton href={sitio.accionPrincipal.href}>{sitio.accionPrincipal.texto}</Boton>
+    </div>
+
+    <button
+      type="button"
+      class="inline-flex size-11 items-center justify-center rounded-full text-tinta hover:bg-superficie md:hidden"
+      aria-controls="menu-movil"
+      aria-expanded="false"
+      data-menu-boton
+    >
+      <span class="sr-only">Abrir menú</span>
+      <svg
+        class="size-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav
+    id="menu-movil"
+    aria-label="Menú móvil"
+    class="hidden border-t border-borde md:hidden"
+    data-menu
+  >
+    <ul class="contenedor flex flex-col gap-1 py-4">
+      {sitio.navegacion.map((enlace) => (
+        <li>
+          <a
+            href={enlace.href}
+            aria-current={esActual(enlace.href) ? 'page' : undefined}
+            class="block rounded-xl px-4 py-3 text-base font-medium hover:bg-superficie aria-[current=page]:text-marca-800"
+          >
+            {enlace.texto}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2">
+        <Boton href={sitio.accionPrincipal.href} class="w-full">
+          {sitio.accionPrincipal.texto}
+        </Boton>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const boton = document.querySelector<HTMLButtonElement>('[data-menu-boton]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  boton?.addEventListener('click', () => {
+    const abierto = boton.getAttribute('aria-expanded') === 'true';
+    boton.setAttribute('aria-expanded', String(!abierto));
+    boton.querySelector('.sr-only')!.textContent = abierto ? 'Abrir menú' : 'Cerrar menú';
+    menu?.classList.toggle('hidden', abierto);
+  });
+
+  document.addEventListener('keydown', (evento) => {
+    if (evento.key === 'Escape' && boton?.getAttribute('aria-expanded') === 'true') {
+      boton.click();
+      boton.focus();
+    }
+  });
+</script>

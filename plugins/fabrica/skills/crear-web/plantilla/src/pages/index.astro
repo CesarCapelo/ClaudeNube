@@ -1,0 +1,91 @@
+---
+// Página de inicio de ejemplo. La skill la sustituye por el contenido real del cliente.
+import Base from '../layouts/Base.astro';
+import Boton from '../components/Boton.astro';
+import Icono from '../components/Icono.astro';
+import { sitio, telefonoEnlace } from '../config/sitio';
+
+const servicios = [
+  {
+    icono: 'Sparkles',
+    titulo: 'Servicio uno',
+    texto: 'Qué resuelve este servicio y para quién, en una o dos frases concretas.',
+  },
+  {
+    icono: 'ShieldCheck',
+    titulo: 'Servicio dos',
+    texto: 'Qué resuelve este servicio y para quién, en una o dos frases concretas.',
+  },
+  {
+    icono: 'HeartHandshake',
+    titulo: 'Servicio tres',
+    texto: 'Qué resuelve este servicio y para quién, en una o dos frases concretas.',
+  },
+] as const;
+---
+
+<Base titulo={sitio.nombre}>
+  <section class="relative overflow-hidden">
+    <div
+      class="absolute inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_80%_-10%,var(--color-marca-100),transparent)]"
+      aria-hidden="true"
+    ></div>
+    <div class="contenedor grid items-center gap-12 py-20 md:grid-cols-[1.15fr_1fr] md:py-28">
+      <div>
+        <p class="font-semibold text-marca-700">{sitio.eslogan}</p>
+        <h1 class="mt-4 text-4xl font-bold leading-[1.1] md:text-6xl">
+          Titular que dice qué haces, para quién y dónde
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-tinta-suave md:text-xl">
+          Subtítulo con el beneficio principal para el cliente y una prueba concreta que lo
+          respalde.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <Boton href={sitio.accionPrincipal.href}>{sitio.accionPrincipal.texto}</Boton>
+          <Boton href={telefonoEnlace} variante="secundario">
+            <Icono nombre="Phone" class="size-5" />
+            Llamar
+          </Boton>
+        </div>
+      </div>
+      <div
+        class="aspect-[4/3] rounded-[var(--radius-tarjeta)] bg-gradient-to-br from-marca-200 to-marca-50 ring-1 ring-marca-100"
+        role="img"
+        aria-label="Espacio reservado para la imagen principal"
+      ></div>
+    </div>
+  </section>
+
+  <section class="contenedor py-16 md:py-24" aria-labelledby="titulo-servicios">
+    <h2 id="titulo-servicios" class="text-3xl font-bold md:text-4xl">
+      Servicios
+    </h2>
+    <ul class="mt-10 grid gap-6 md:grid-cols-3">
+      {servicios.map((servicio) => (
+        <li class="rounded-[var(--radius-tarjeta)] border border-borde bg-white p-7">
+          <span class="inline-flex size-12 items-center justify-center rounded-xl bg-marca-50 text-marca-700">
+            <Icono nombre={servicio.icono} class="size-6" />
+          </span>
+          <h3 class="mt-5 text-xl font-semibold">{servicio.titulo}</h3>
+          <p class="mt-2 text-tinta-suave">{servicio.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="contenedor" aria-labelledby="titulo-cta">
+    <div class="rounded-[var(--radius-tarjeta)] bg-marca-900 px-8 py-14 text-center text-white md:px-16">
+      <h2 id="titulo-cta" class="text-3xl font-bold md:text-4xl">
+        Llamada a la acción final
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-marca-100">
+        Recuerda el beneficio y elimina la última duda antes de contactar.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <Boton href="/contacto" variante="secundario">
+          {sitio.accionPrincipal.texto}
+        </Boton>
+      </div>
+    </div>
+  </section>
+</Base>

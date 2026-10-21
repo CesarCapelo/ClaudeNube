@@ -1,0 +1,184 @@
+---
+import { sitio } from '../config/sitio';
+
+interface Props {
+  /** Nombre interno del formulario (Netlify lo usa para agrupar los envíos). */
+  nombre?: string;
+  /** Texto del botón de envío. */
+  textoBoton?: string;
+  /** Muestra el campo «¿Qué te interesa?» con estas opciones. Vacío = sin campo. */
+  motivos?: string[];
+}
+
+const { nombre = 'contacto', textoBoton = 'Enviar mensaje', motivos = [] } = Astro.props;
+const { modo, endpoint } = sitio.formulario;
+
+const atributosModo =
+  modo === 'netlify'
+    ? { 'data-netlify': 'true', 'netlify-honeypot': 'empresa_web', action: '/gracias' }
+    : modo === 'endpoint'
+      ? { action: endpoint, 'data-envio-js': 'true' }
+      : { action: `mailto:${sitio.contacto.email}`, enctype: 'text/plain' };
+
+const campo =
+  'mt-2 block w-full rounded-xl border border-borde bg-white px-4 py-3 text-base text-tinta shadow-xs placeholder:text-tinta-suave/70 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 focus:outline-none';
+const etiqueta = 'block text-sm font-semibold text-tinta';
+---
+
+<form name={nombre} method="post" class="space-y-5" {...atributosModo}>
+  {modo === 'netlify' && <input type="hidden" name="form-name" value={nombre} />}
+
+  <p class="hidden">
+    <label>
+      No rellenes este campo si eres una persona:{' '}
+      <input name="empresa_web" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for={`${nombre}-nombre`} class={etiqueta}>
+        Nombre <span aria-hidden="true">*</span>
+      </label>
+      <input
+        id={`${nombre}-nombre`}
+        name="nombre"
+        type="text"
+        required
+        autocomplete="name"
+        class={campo}
+      />
+    </div>
+    <div>
+      <label for={`${nombre}-telefono`} class={etiqueta}>
+        Teléfono <span class="font-normal text-tinta-suave">(opcional)</span>
+      </label>
+      <input
+        id={`${nombre}-telefono`}
+        name="telefono"
+        type="tel"
+        autocomplete="tel"
+        class={campo}
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for={`${nombre}-email`} class={etiqueta}>
+      Correo electrónico <span aria-hidden="true">*</span>
+    </label>
+    <input
+      id={`${nombre}-email`}
+      name="email"
+      type="email"
+      required
+      autocomplete="email"
+      class={campo}
+    />
+  </div>
+
+  {motivos.length > 0 && (
+    <div>
+      <label for={`${nombre}-motivo`} class={etiqueta}>
+        ¿Qué te interesa?
+      </label>
+      <select id={`${nombre}-motivo`} name="motivo" class={campo}>
+        {motivos.map((motivo) => (
+          <option value={motivo}>{motivo}</option>
+        ))}
+      </select>
+    </div>
+  )}
+
+  <div>
+    <label for={`${nombre}-mensaje`} class={etiqueta}>
+      Mensaje <span aria-hidden="true">*</span>
+    </label>
+    <textarea id={`${nombre}-mensaje`} name="mensaje" rows="5" required class={campo}></textarea>
+  </div>
+
+  <div
+    class="rounded-xl bg-superficie p-4 text-sm leading-relaxed text-tinta-suave"
+    id={`${nombre}-info-rgpd`}
+  >
+    <p>
+      <strong class="text-tinta">Información básica sobre protección de datos.</strong> Responsable:{' '}
+      {sitio.titular.razonSocial}. Finalidad: responder a tu consulta. Legitimación: tu
+      consentimiento. Destinatarios: no se ceden datos a terceros, salvo obligación legal y el
+      proveedor que recibe el formulario ({sitio.formulario.proveedor}). Derechos: acceso,
+      rectificación, supresión y otros, como se explica en la{' '}
+      <a href="/politica-privacidad" class="text-marca-700 underline underline-offset-2">
+        política de privacidad
+      </a>
+      .
+    </p>
+  </div>
+
+  <div class="flex items-start gap-3">
+    <input
+      id={`${nombre}-privacidad`}
+      name="acepta_privacidad"
+      type="checkbox"
+      required
+      value="si"
+      aria-describedby={`${nombre}-info-rgpd`}
+      class="mt-1 size-5 shrink-0 rounded border-borde text-marca-700 focus:ring-marca-500"
+    />
+    <label for={`${nombre}-privacidad`} class="text-sm text-tinta">
+      He leído y acepto la{' '}
+      <a href="/politica-privacidad" class="text-marca-700 underline underline-offset-2">
+        política de privacidad
+      </a>
+      .<span aria-hidden="true">*</span>
+    </label>
+  </div>
+
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <button
+      type="submit"
+      class="inline-flex min-h-11 items-center justify-center rounded-full bg-marca-700 px-7 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-marca-800 disabled:opacity-60"
+    >
+      {textoBoton}
+    </button>
+    <p class="text-sm text-tinta-suave">Los campos con * son obligatorios.</p>
+  </div>
+
+  <p
+    class="hidden rounded-xl p-4 text-base font-medium"
+    role="status"
+    aria-live="polite"
+    data-estado-envio
+  ></p>
+</form>
+
+<script>
+  // Envío sin recargar para el modo «endpoint». Sin JavaScript, el formulario se envía igualmente.
+  document.querySelectorAll<HTMLFormElement>('form[data-envio-js]').forEach((formulario) => {
+    formulario.addEventListener('submit', async (evento) => {
+      evento.preventDefault();
+      const estado = formulario.querySelector<HTMLElement>('[data-estado-envio]')!;
+      const boton = formulario.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+      boton.disabled = true;
+      estado.className = 'rounded-xl p-4 text-base font-medium bg-superficie';
+      estado.textContent = 'Enviando…';
+
+      try {
+        const respuesta = await fetch(formulario.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(formulario))),
+        });
+        if (!respuesta.ok) throw new Error(String(respuesta.status));
+        formulario.reset();
+        estado.className = 'rounded-xl p-4 text-base font-medium bg-green-50 text-green-900';
+        estado.textContent = 'Mensaje enviado. Te responderemos lo antes posible.';
+      } catch {
+        estado.className = 'rounded-xl p-4 text-base font-medium bg-red-50 text-red-900';
+        estado.textContent =
+          'No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbenos directamente por correo.';
+      } finally {
+        boton.disabled = false;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import { sitio } from '../config/sitio';
+import Seo from '../components/Seo.astro';
+import Cabecera from '../components/Cabecera.astro';
+import Pie from '../components/Pie.astro';
+import BotonWhatsApp from '../components/BotonWhatsApp.astro';
+import Analitica from '../components/Analitica.astro';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  imagen?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang={sitio.idioma}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Seo {...props} />
+    <Analitica />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#contenido"
+      class="sr-only z-50 rounded-full bg-marca-800 px-5 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+    >
+      Saltar al contenido
+    </a>
+    <Cabecera />
+    <main id="contenido" class="flex-1">
+      <slot />
+    </main>
+    <Pie />
+    <BotonWhatsApp />
+  </body>
+</html>

@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+/*
+ * Tokens de diseño de la aplicación. La skill los ajusta a la marca del cliente
+ * (generados con paleta.mjs; contraste mínimo 4,5:1 en texto).
+ */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-marca-50: oklch(97.5% 0.012 250);
+  --color-marca-100: oklch(94% 0.025 250);
+  --color-marca-200: oklch(88.5% 0.045 250);
+  --color-marca-300: oklch(80% 0.075 250);
+  --color-marca-400: oklch(70% 0.11 250);
+  --color-marca-500: oklch(60% 0.13 250);
+  --color-marca-600: oklch(52% 0.13 250);
+  --color-marca-700: oklch(45% 0.12 250);
+  --color-marca-800: oklch(38% 0.1 250);
+  --color-marca-900: oklch(31% 0.08 250);
+  --color-marca-950: oklch(23% 0.06 250);
+
+  --color-tinta: oklch(23% 0.02 250);
+  --color-tinta-suave: oklch(45% 0.02 250);
+  --color-fondo: oklch(98.5% 0.004 250);
+  --color-superficie: oklch(100% 0 0);
+  --color-borde: oklch(89% 0.012 250);
+
+  --color-exito: oklch(45% 0.11 150);
+  --color-aviso: oklch(52% 0.12 70);
+  --color-peligro: oklch(50% 0.18 27);
+}
+
+@layer base {
+  html {
+    color: var(--color-tinta);
+    background: var(--color-fondo);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-marca-500);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+}

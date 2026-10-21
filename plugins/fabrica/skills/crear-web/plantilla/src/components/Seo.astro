@@ -1,0 +1,81 @@
+---
+import { sitio, direccionEnUnaLinea } from '../config/sitio';
+
+interface Props {
+  /** Título de la página sin el nombre del negocio (se añade solo). Máx. ~55 caracteres en total. */
+  titulo: string;
+  /** Meta descripción entre 120 y 155 caracteres. */
+  descripcion?: string;
+  /** Ruta de la imagen social dentro de /public (1200×630). */
+  imagen?: string;
+  noindex?: boolean;
+  /** Datos estructurados adicionales de la página (FAQPage, Service, BlogPosting…). */
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  titulo,
+  descripcion = sitio.descripcion,
+  imagen = '/og.png',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const tituloCompleto = titulo === sitio.nombre ? titulo : `${titulo} | ${sitio.nombre}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? sitio.url).href;
+const imagenAbsoluta = new URL(imagen, Astro.site ?? sitio.url).href;
+
+const redes = Object.values(sitio.redes).filter(Boolean);
+
+const negocio: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': sitio.tipoSchema,
+  '@id': `${sitio.url}/#negocio`,
+  name: sitio.nombre,
+  description: sitio.descripcion,
+  url: sitio.url,
+  telephone: sitio.contacto.telefono,
+  email: sitio.contacto.email,
+  image: imagenAbsoluta,
+  ...(sitio.direccion && {
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: sitio.direccion.calle,
+      postalCode: sitio.direccion.codigoPostal,
+      addressLocality: sitio.direccion.localidad,
+      addressRegion: sitio.direccion.provincia,
+      addressCountry: sitio.direccion.pais,
+    },
+  }),
+  ...(sitio.geo && {
+    geo: { '@type': 'GeoCoordinates', latitude: sitio.geo.lat, longitude: sitio.geo.lng },
+  }),
+  ...(sitio.horario.length > 0 && { openingHours: sitio.horario.flatMap((h) => h.schema) }),
+  ...(redes.length > 0 && { sameAs: redes }),
+};
+
+const esInicio = Astro.url.pathname === '/';
+const datosEstructurados = [...(esInicio ? [negocio] : []), ...jsonLd];
+---
+
+<title>{tituloCompleto}</title>
+<meta name="description" content={descripcion} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={sitio.locale} />
+<meta property="og:site_name" content={sitio.nombre} />
+<meta property="og:title" content={tituloCompleto} />
+<meta property="og:description" content={descripcion} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imagenAbsoluta} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+{direccionEnUnaLinea && <meta name="geo.placename" content={direccionEnUnaLinea} />}
+
+{datosEstructurados.map((datos) => (
+  <script type="application/ld+json" set:html={JSON.stringify(datos)} />
+))}
