@@ -98,7 +98,7 @@ export const sitio = {
     modo: 'netlify' as ModoFormulario,
     endpoint: '/api/contacto',
     /** Encargado del tratamiento que recibe los mensajes, para la política de privacidad. */
-    proveedor: 'Netlify, Inc. (formularios del alojamiento)',
+    proveedor: 'Netlify, Inc. (EE. UU.)',
   },
 
   analitica: {
