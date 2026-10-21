@@ -57,7 +57,7 @@ En la vuelta final ejecuta la auditoría con `--estricto --ignorar-texto "PENDIE
 
 ## 3. Encargos para los revisores
 
-Lánzalos en paralelo, con la vista previa en marcha y las capturas ya generadas. No les pidas que arreglen nada: solo que informen.
+Lánzalos en paralelo (varias llamadas a Agent en el mismo mensaje, sin segundo plano), con la vista previa en marcha y las capturas ya generadas. No les pidas que arreglen nada: solo que informen.
 
 **`fabrica:revisor-requisitos`**
 

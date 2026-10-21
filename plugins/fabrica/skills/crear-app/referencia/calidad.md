@@ -20,7 +20,7 @@ Todas deben cumplirse para pasar a la publicación:
 
 ## 2. Encargos para los revisores
 
-Lánzalos en paralelo cuando las puertas 1 a 6 estén en verde, con la auditoría ya hecha (las capturas están en `.fabrica/auditoria/capturas/`).
+Lánzalos en paralelo (varias llamadas a Agent en el mismo mensaje, sin segundo plano) cuando las puertas 1 a 6 estén en verde, con la auditoría ya hecha (las capturas están en `.fabrica/auditoria/capturas/`).
 
 **`fabrica:revisor-requisitos`**
 

@@ -485,7 +485,11 @@ for (const e of resultado.enlacesRotos) {
   (e.interno ? bloquea : avisa)(`Enlace roto (${e.estado}) ${e.url} — aparece en ${e.en.join(', ')}`);
 }
 for (const lh of resultado.lighthouse) {
+  // El SEO de una página con noindex (gracias, guía de estilo, zonas privadas) no se evalúa: no debe indexarse.
+  const pagina = resultado.paginas.find((p) => p.ruta === lh.ruta || p.ruta === lh.ruta.replace(/\/$/, ''));
+  const sinIndexar = /noindex/i.test(pagina?.seo?.robots ?? '');
   for (const [categoria, nota] of Object.entries(lh.movil)) {
+    if (categoria === 'seo' && sinIndexar) continue;
     if (nota < UMBRAL_LH) bloquea(`${lh.ruta}: Lighthouse móvil ${categoria} = ${nota} (mínimo ${UMBRAL_LH}). Mejoras: ${lh.mejoras.slice(0, 5).join('; ')}`);
   }
 }

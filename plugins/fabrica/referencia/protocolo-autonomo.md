@@ -104,6 +104,8 @@ Respuesta: lista de ficheros cambiados, cómo lo verificaste (con la salida resu
 
 Después de cada subagente, revisa su resultado (diff y verificación), integra, haz el commit tú y actualiza el estado. No lances en paralelo dos subagentes que puedan tocar el mismo fichero.
 
+**Cómo lanzarlos en paralelo y esperar:** pon varias llamadas a la herramienta Agent en el mismo mensaje, cada una con `run_in_background: false`. Se ejecutan a la vez y recibes todos los resultados juntos. No los lances en segundo plano para luego esperarlos con `sleep` o bucles: en sesiones no interactivas, terminar el turno con tareas en segundo plano puede cerrar la sesión y perder sus resultados.
+
 ## 7. Cuidar el contexto en sesiones largas
 
 - No vuelques ficheros enteros grandes (lockfiles, HTML compilado, registros largos). Usa `head`, `tail`, `grep` o delega en un subagente la lectura.
